@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>MOCHI PLOSOK</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+body{
+  margin:0;
+  font-family:'DM Sans';
+  background:linear-gradient(135deg,#fdfbfb,#eef1f5);
+}
+
+/* NAV */
+nav{
+  position:fixed;
+  width:100%;
+  background:rgba(255,255,255,0.8);
+  backdrop-filter:blur(12px);
+  box-shadow:0 5px 20px rgba(0,0,0,.08);
+  z-index:999;
+}
+.nav-inner{
+  display:flex;
+  justify-content:space-between;
+  padding:15px 30px;
+}
+.menu a{
+  margin-left:20px;
+  cursor:pointer;
+  text-decoration:none;
+  color:#333;
+  transition:0.3s;
+}
+.menu a:hover{color:#ff6f91;}
+
+.page{display:none;padding:110px 0;}
+.active{display:block}
+
+/* HERO */
+.hero{
+  text-align:center;
+  min-height:90vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+.hero img{
+  width:160px;
+  animation:float 3s infinite;
+}
+@keyframes float{
+  50%{transform:translateY(-10px);}
+}
+.hero h1{
+  font-family:'Playfair Display';
+  font-size:3rem;
+}
+.hero p{opacity:0.7;}
+.cta{
+  margin-top:20px;
+  padding:12px 25px;
+  border-radius:30px;
+  background:linear-gradient(135deg,#ff6f91,#ff9671);
+  color:white;
+  cursor:pointer;
+  transition:0.3s;
+}
+.cta:hover{transform:scale(1.05);}
+
+/* GRID */
+.container{max-width:1200px;margin:auto;padding:0 20px;}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+
+/* CARD */
+.card{
+  background:white;
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 10px 25px rgba(0,0,0,.08);
+  transition:0.3s;
+}
+.card:hover{transform:translateY(-10px);}
+.card img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+}
+.card p{padding:15px}
+
+/* BUTTON */
+button{
+  background:linear-gradient(135deg,#ff6f91,#ff9671);
+  border:none;
+  color:white;
+  padding:8px 14px;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+/* CART */
+.cart-item{
+  background:white;
+  padding:15px;
+  border-radius:15px;
+  margin-bottom:10px;
+  box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+/* ARTICLE */
+.article{
+  background:white;
+  padding:25px;
+  border-radius:20px;
+  box-shadow:0 10px 20px rgba(0,0,0,.08);
+}
+.article img{
+  width:100%;
+  max-height:300px;
+  object-fit:cover;
+  border-radius:10px;
+  margin-bottom:15px;
+}
+
+h2{color:#ff6f91;}
+a{color:#ff6f91;cursor:pointer;}
+
+/* STARS */
+#stars span{
+  font-size:28px;
+  cursor:pointer;
+  transition:0.2s;
+}
+#stars span:hover{transform:scale(1.2);}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <b>Mochi Plosok</b>
+    <div class="menu">
+      <a onclick="showPage('home')">Home</a>
+      <a onclick="showPage('produk')">Produk</a>
+      <a onclick="showPage('artikel1')">Artikel</a>
+      <a onclick="showPage('cart')">Keranjang</a>
+      <a onclick="showPage('ulasan')">Ulasan</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HOME -->
+<div id="home" class="page active">
+  <div class="hero">
+    <img src="logo.jpeg">
+    <h1>Mochi <span style="color:#ff6f91">Premium</span></h1>
+    <p>Camilan lembut, lumer, dan bikin nagih 🤤</p>
+    <div class="cta" onclick="showPage('produk')">Lihat Produk</div>
+  </div>
+</div>
+
+<!-- PRODUK -->
+<div id="produk" class="page">
+<div class="container">
+<h2>Produk</h2>
+
+<div class="grid">
+
+<div class="card">
+<img src="foto1.jpeg">
+<p>Cake - Rp10.000</p>
+<button onclick="addToCart('Cake',10000)">Tambah</button>
+</div>
+
+<div class="card">
+<img src="foto2.jpeg">
+<p>Blueberry & Orange - Rp12.000</p>
+<button onclick="addToCart('Blueberry',12000)">Tambah</button>
+</div>
+
+<div class="card">
+<img src="foto3.jpeg">
+<p>Matcha & Durian - Rp15.000</p>
+<button onclick="addToCart('Matcha',15000)">Tambah</button>
+</div>
+
+<div class="card">
+<img src="foto7.jpeg">
+<p>Vanilla - Rp11.000</p>
+<button onclick="addToCart('Vanilla',11000)">Tambah</button>
+</div>
+
+<div class="card">
+<img src="foto5.jpeg">
+<p>Coklat & Strawberry - Rp13.000</p>
+<button onclick="addToCart('Coklat',13000)">Tambah</button>
+</div>
+
+<div class="card">
+<img src="foto6.jpeg">
+<p>Tiramisu - Rp14.000</p>
+<button onclick="addToCart('Tiramisu',14000)">Tambah</button>
+</div>
+
+</div>
+</div>
+</div>
+
+<!-- ARTIKEL 1 -->
+<div id="artikel1" class="page">
+<div class="container">
+<h2>Artikel</h2>
+
+<div class="article">
+<img src="foto1.jpeg">
+<h3>Inovasi Mochi Plosok</h3>
+<p>
+Mochi Plosok merupakan camilan kekinian dengan tekstur lembut dan isian lumer yang menarik perhatian. Produk ini tidak hanya enak, tetapi juga memiliki tampilan estetik yang cocok untuk media sosial. Dengan berbagai varian rasa seperti cokelat, matcha, dan stroberi, produk ini mampu menjangkau berbagai kalangan. Keunggulan utama terletak pada sensasi lumer saat digigit. Hal ini menjadikan Mochi Plosok berbeda dari camilan lainnya. Selain itu, bahan yang mudah didapat membuatnya memiliki peluang besar untuk dikembangkan menjadi usaha yang menjanjikan di era modern saat ini.
+</p>
+
+<p style="margin-top:15px;">
+👉 <a onclick="showPage('artikel2')" style="font-weight:bold;">
+Baca Artikel Selanjutnya →
+</a>
+</p>
+
+</div>
+</div>
+</div>
+
+<!-- ARTIKEL 2 -->
+<div id="artikel2" class="page">
+<div class="container">
+<h2>Artikel Lanjutan</h2>
+
+<div class="article">
+<img src="foto2.jpeg">
+<h3>Peluang Bisnis Mochi Plosok</h3>
+<p>
+Peluang bisnis Mochi Plosok sangat menjanjikan karena mengikuti tren makanan kekinian yang berkembang pesat. Produk dengan tampilan menarik dan rasa unik sangat mudah viral di media sosial. Dengan strategi pemasaran digital seperti video pendek, usaha ini bisa berkembang dengan cepat. Selain itu, modal yang dibutuhkan relatif kecil sehingga cocok untuk pemula. Konsistensi rasa dan inovasi menjadi kunci utama agar produk tetap diminati. Dengan pengelolaan yang baik, Mochi Plosok memiliki potensi menjadi brand kuliner yang dikenal luas di berbagai kalangan masyarakat modern saat ini.
+</p>
+
+<p style="margin-top:15px;">
+🤝 Mitra Kami:<br>
+<a href="https://anastasyagt29-ops.github.io/kelapamuda.github.io/" target="_blank">
+Kelompok 4 - Kelapa Muda
+</a>
+</p>
+
+<p style="margin-top:15px;">
+🔙 <a onclick="showPage('artikel1')">Kembali ke Artikel Awal</a>
+</p>
+
+</div>
+</div>
+</div>
+
+<!-- ULASAN -->
+<div id="ulasan" class="page">
+  <div class="container">
+    <h2>Rating & Ulasan</h2>
+
+    <div class="article">
+      <input id="namaUser" placeholder="Nama" style="width:100%; padding:10px; margin-bottom:10px;">
+
+      <div id="stars">
+        <span onclick="setRating(1)">☆</span>
+        <span onclick="setRating(2)">☆</span>
+        <span onclick="setRating(3)">☆</span>
+        <span onclick="setRating(4)">☆</span>
+        <span onclick="setRating(5)">☆</span>
+      </div>
+
+      <textarea id="komentar" placeholder="Tulis ulasan..." style="width:100%; padding:10px; margin-top:10px;"></textarea>
+
+      <button onclick="kirimUlasan()">Kirim Ulasan</button>
+    </div>
+
+    <div id="list-ulasan" style="margin-top:20px;"></div>
+  </div>
+</div>
+
+<!-- CART -->
+<div id="cart" class="page">
+<div class="container">
+<h2>Keranjang</h2>
+<div id="cart-list"></div>
+<h3 id="total"></h3>
+<button onclick="checkout()">Checkout WhatsApp</button>
+</div>
+</div>
+
+<script>
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  loadCart();
+  loadUlasan();
+}
+
+/* CART */
+function addToCart(nama,harga){
+  let cart=JSON.parse(localStorage.getItem('cart'))||[];
+  let found=cart.find(i=>i.nama===nama);
+  if(found){found.qty++}
+  else{cart.push({nama,harga,qty:1})}
+  localStorage.setItem('cart',JSON.stringify(cart));
+  alert("Ditambahkan");
+}
+
+function loadCart(){
+  let cart=JSON.parse(localStorage.getItem('cart'))||[];
+  let list=document.getElementById('cart-list');
+  let total=0;
+  list.innerHTML="";
+  cart.forEach((item,index)=>{
+    list.innerHTML+=`
+    <div class="cart-item">
+      <b>${item.nama}</b><br>
+      Rp ${item.harga} x ${item.qty} = Rp ${item.harga*item.qty}<br>
+      <button onclick="changeQty(${index},-1)">➖</button>
+      <button onclick="changeQty(${index},1)">➕</button>
+      <button onclick="removeItem(${index})">❌</button>
+    </div>`;
+    total+=item.harga*item.qty;
+  });
+  document.getElementById('total').innerText="Total: Rp "+total;
+}
+
+function changeQty(i,val){
+  let cart=JSON.parse(localStorage.getItem('cart'));
+  cart[i].qty+=val;
+  if(cart[i].qty<=0) cart.splice(i,1);
+  localStorage.setItem('cart',JSON.stringify(cart));
+  loadCart();
+}
+
+function removeItem(i){
+  let cart=JSON.parse(localStorage.getItem('cart'));
+  cart.splice(i,1);
+  localStorage.setItem('cart',JSON.stringify(cart));
+  loadCart();
+}
+
+function checkout(){
+  let cart=JSON.parse(localStorage.getItem('cart'))||[];
+  if(cart.length===0){alert("Keranjang kosong");return;}
+  let pesan="Halo, saya ingin memesan:%0A";
+  cart.forEach(item=>{
+    pesan+=`- ${item.nama} x${item.qty} = Rp ${item.harga*item.qty}%0A`;
+  });
+  window.open("https://wa.me/6281234567890?text="+pesan);
+}
+
+/* ULASAN */
+let rating = 0;
+
+function setRating(n){
+  rating = n;
+  let stars = document.querySelectorAll("#stars span");
+  stars.forEach((star, index)=>{
+    star.innerHTML = index < n ? "⭐" : "☆";
+  });
+}
+
+function kirimUlasan(){
+  let nama = document.getElementById('namaUser').value;
+  let komentar = document.getElementById('komentar').value;
+
+  if(!nama || !komentar || rating===0){
+    alert("Isi semua & pilih rating!");
+    return;
+  }
+
+  let data = JSON.parse(localStorage.getItem('ulasan')) || [];
+  data.push({nama, komentar, rating});
+  localStorage.setItem('ulasan', JSON.stringify(data));
+
+  document.getElementById('namaUser').value="";
+  document.getElementById('komentar').value="";
+  rating=0;
+  setRating(0);
+
+  loadUlasan();
+}
+
+function loadUlasan(){
+  let data = JSON.parse(localStorage.getItem('ulasan')) || [];
+  let list = document.getElementById('list-ulasan');
+  list.innerHTML="";
+  data.reverse().forEach(item=>{
+    list.innerHTML += `
+      <div class="article">
+        <b>${item.nama}</b><br>
+        ${"⭐".repeat(item.rating)}<br>
+        ${item.komentar}
+      </div>
+    `;
+  });
+}
+
+// init
+loadCart();
+loadUlasan();
+</script>
+
+</body>
+</html>
